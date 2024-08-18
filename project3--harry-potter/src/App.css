@@ -1,5 +1,11 @@
-#root {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Bitxmap;
+}
+
+@font-face {
+  font-family: Bitxmap;
+  src: url(./assets/bitxmap.ttf);
 }

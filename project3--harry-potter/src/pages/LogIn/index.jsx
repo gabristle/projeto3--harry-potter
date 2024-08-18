@@ -1,8 +1,11 @@
 import React from 'react'
+import Input from '../../components/Input'
 
 function Login() {
   return (
-    <div>Login</div>
+    <div>
+      <Input type={'text'} placeholder={'Enter your email'} id={'email'}/>
+    </div>
   )
 }
 
