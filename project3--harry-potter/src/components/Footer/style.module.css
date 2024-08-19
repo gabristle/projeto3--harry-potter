@@ -1,0 +1,10 @@
+@import url(../../styles/_variables.css);
+
+p {
+    font-size: 0.8rem;
+    color: var(--white);
+}
+
+a {
+    color: var(--dark-green);
+}
