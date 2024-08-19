@@ -1,0 +1,15 @@
+@import url(../../styles/_variables.css);
+
+.button {
+    width: 100%;
+    background-color: var(--dark-green);
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.button:hover{
+    background-color: var(--green);
+    border-radius: 5px;
+}
