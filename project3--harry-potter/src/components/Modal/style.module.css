@@ -1,0 +1,35 @@
+@import url(../../styles/_variables.css);
+
+.modalBackground {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgb(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainer {
+    position: fixed;
+    top: auto;
+    width: 500px;
+    background-color: var(--green);
+    padding: 2rem;
+    border: 5px double var(--white);
+}
+
+.modalContainer h1 {
+    text-align: center;
+}
+
+.modalContainer Input {
+    margin: 0.5rem 0rem;
+}
+
+.modalContainer Button {
+    margin: 0.5rem 0rem;
+}
