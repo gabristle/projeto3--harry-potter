@@ -9,7 +9,7 @@ function Router() {
   return (
     <Routes>
         <Route path="/login" element={<SignIn />}/>
-        <Route path="/characters" element={<Characters />}/>
+        <Route path="/" element={<Characters />}/>
         <Route path="/error" element={<Error />}/>
         <Route path="*" element={<Navigate to="/error"/>}/>
     </Routes>
