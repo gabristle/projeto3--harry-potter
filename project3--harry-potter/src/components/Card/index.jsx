@@ -15,7 +15,7 @@ function Card({name, specie, gender, house, dateOfBirth, ancestry, eye, hair, im
                 <p>Eye Colour: {eye}</p>
                 <p>Hair Colour: {hair}</p>
             </div>
-            <img src={image} alt={name + ' photo'} />
+            <img src={image} alt={name + ' photo'} className={style.characterImg}/>
         </div>
     </div>
   )
