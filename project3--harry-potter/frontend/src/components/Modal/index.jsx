@@ -12,8 +12,8 @@ function Modal({closeModal, addCharacter}) {
         house: '',
         dateOfBirth: '',
         ancestry: '',
-        eye: '',
-        hair: '',
+        eyeColor: '',
+        hairColor: '',
     })
 
   const handleCancel = () => {
@@ -59,12 +59,12 @@ function Modal({closeModal, addCharacter}) {
                 <Input type='text' placeholder='Character ancestry' id='ancestry' onChange={handleChange}/>
             </div>
             <div>
-                <label htmlFor="eye">Eye</label>
-                <Input type='text' placeholder='Character eye' id='eyeColour' onChange={handleChange}/>
+                <label htmlFor="eyeColor">Eye</label>
+                <Input type='text' placeholder='Character eye' id='eyeColor' onChange={handleChange}/>
             </div>
             <div>
-                <label htmlFor="hair">Hair</label>
-                <Input type='text' placeholder='Character hair' id='hairColour' onChange={handleChange}/>
+                <label htmlFor="hairColor">Hair</label>
+                <Input type='text' placeholder='Character hair' id='hairColor' onChange={handleChange}/>
             </div>
             <Button value='Cancel' onClick={handleCancel}/>
             <Button value='Add Character' onClick={handleAdd}/>

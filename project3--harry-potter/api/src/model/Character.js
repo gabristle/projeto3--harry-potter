@@ -16,15 +16,15 @@ const CharacterModel = sequelize.define('Character', {
         type: DataTypes.STRING
     },
     dateOfBirth: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     },
     ancestry: {
         type: DataTypes.STRING
     },
-    eye: {
+    eyeColor: {
         type: DataTypes.STRING
     },
-    hair: {
+    hairColor: {
         type: DataTypes.STRING
     }
 });

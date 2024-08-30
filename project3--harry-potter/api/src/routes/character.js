@@ -4,7 +4,10 @@ import { validateCharacter } from '../middlewares/characterMiddleware.js'
 
 const router = express.Router()
 
-router.get('/characters', characterController.search)
-router.post('/characters', validateCharacter, characterController.add)
+router.get('/search', characterController.search)
+
+router.get('/', characterController.listAll)
+
+router.post('/', validateCharacter, characterController.add)
 
 export default router

@@ -19,17 +19,17 @@ export const validateCharacter = [
 
     body('dateOfBirth')
         .optional()
-        .isISO8601().withMessage('Date of Birth must be a valid ISO8601 date'),
+        .isISO8601().withMessage('Date of Birth must be a valid date'),
 
     body('ancestry')
         .optional()
         .isString().withMessage('Ancestry must be a string'),
 
-    body('eye')
+    body('eyeColor')
         .optional()
         .isString().withMessage('Eye color must be a string'),
 
-    body('hair')
+    body('hairColor')
         .optional()
-        .isString().withMessage('Hair color must be a string')
+        .isString().withMessage('Hair color must be a string'),
 ]

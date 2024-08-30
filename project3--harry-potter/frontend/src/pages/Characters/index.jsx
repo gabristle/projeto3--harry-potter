@@ -50,13 +50,15 @@ function Characters() {
           </div>
           <div className={style.cardsContainer}>
             {Array.isArray(foundCharacters) && foundCharacters.map(character => (
-                <Card key={character.id} name={character.name} race={character.race} specie={character.species} gender={character.gender} house={character.house} dateOfBirth={character.dateOfBirth} ancestry={character.ancestry} eye={character.eyeColour} hair={character.hairColour} image={character.image}></Card>
+                <Card key={character.id} name={character.name} race={character.race} specie={character.species} gender={character.gender} house={character.house} dateOfBirth={character.dateOfBirth} ancestry={character.ancestry} eyeColor={character.eyeColor} hairColor={character.hairColor} image={character.image}></Card>
             ))}  
           </div>
           {modalOpen && <Modal closeModal={closeModal} addCharacter={addCharacter}/>}
         </main>
       </div>
-      <Button value={'Logout'} onClick={handleLogout}></Button>
+      <div className={style.logoutButton}>
+        <Button value={'Logout'} onClick={handleLogout}></Button>
+      </div>
       <Footer />
     </div>
   )

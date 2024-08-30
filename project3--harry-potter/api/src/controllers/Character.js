@@ -2,6 +2,15 @@ import CharacterModel from '../model/Character.js'
 import { validationResult } from 'express-validator'
 
 export const characterController = {
+    async listAll(req, res) {
+        try{
+            const characters = await CharacterModel.findAll()
+            res.status(200).json(characters)
+        }catch(error){
+            res.status(400).json({message: error})
+        }
+    },
+
     async search(req, res) {
         try {
             const { name } = req.query
