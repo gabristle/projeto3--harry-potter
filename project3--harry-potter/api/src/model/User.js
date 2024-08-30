@@ -1,8 +1,5 @@
-import {Sequelize, DataTypes} from 'sequelize'
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: './database.sqlite'
-});
+import DataTypes from 'sequelize'
+import sequelize from '../bd/bdConnection.js'
 
 const UserModel = sequelize.define('User', {
     id: {

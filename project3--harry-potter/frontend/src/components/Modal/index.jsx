@@ -2,13 +2,31 @@ import React from 'react'
 import style from './style.module.css'
 import Button from '../Button'
 import Input from '../Input'
+import { useState } from 'react'
 
-function Modal({closeModal}) {
+function Modal({closeModal, addCharacter}) {
+    const [character, setCharacter] = useState({
+        name: '',
+        species: '',
+        gender: '',
+        house: '',
+        dateOfBirth: '',
+        ancestry: '',
+        eye: '',
+        hair: '',
+    })
+
   const handleCancel = () => {
     closeModal()
   }
 
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setCharacter({ ...character, [id]: value });
+  };
+
   const handleAdd = () => {
+    addCharacter(character)
     closeModal()
   }
 
@@ -18,38 +36,38 @@ function Modal({closeModal}) {
             <h1>Add New Character</h1>
             <div>
                 <label htmlFor="name">Name</label>
-                <Input type='text' placeholder='Character name' id='name'/>
+                <Input type='text' placeholder='Character name' id='name' onChange={handleChange}/>
             </div>
             <div>
                 <label htmlFor="species">Specie</label>
-                <Input type='text' placeholder='Character species' id='species'/>
+                <Input type='text' placeholder='Character species' id='species' onChange={handleChange}/>
             </div>
             <div>
                 <label htmlFor="gender">Gender</label>
-                <Input type='text' placeholder='Character gender' id='gender'/>
+                <Input type='text' placeholder='Character gender' id='gender' onChange={handleChange}/>
             </div>
             <div>
                 <label htmlFor="house">House</label>
-                <Input type='text' placeholder='Character house' id='house'/>
+                <Input type='text' placeholder='Character house' id='house' onChange={handleChange}/>
             </div>
             <div>
                 <label htmlFor="dateOfBirth">Date of Birth</label>
-                <Input type='date' placeholder='Character date of birth' id='date of birth'/>
+                <Input type='date' placeholder='Character date of birth' id='dateOfBirth' onChange={handleChange}/>
             </div>
             <div>
                 <label htmlFor="ancestry">Ancestry</label>
-                <Input type='text' placeholder='Character ancestry' id='ancestry'/>
+                <Input type='text' placeholder='Character ancestry' id='ancestry' onChange={handleChange}/>
             </div>
             <div>
                 <label htmlFor="eye">Eye</label>
-                <Input type='text' placeholder='Character eye' id='eye'/>
+                <Input type='text' placeholder='Character eye' id='eyeColour' onChange={handleChange}/>
             </div>
             <div>
                 <label htmlFor="hair">Hair</label>
-                <Input type='text' placeholder='Character hair' id='hair'/>
+                <Input type='text' placeholder='Character hair' id='hairColour' onChange={handleChange}/>
             </div>
             <Button value='Cancel' onClick={handleCancel}/>
-            <Button value='Add Character' onclick={handleAdd}/>
+            <Button value='Add Character' onClick={handleAdd}/>
         </div>
     </div>
   )

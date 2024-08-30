@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import axiosInstance from '../api/axiosConfig'
+import axiosInstance from '../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, senha) => {
         try {
-            const response = await axiosInstance.post('/user', { email, senha });
+            const response = await axiosInstance.post('/user/login', { email, senha });
             localStorage.setItem('token', response.data.token);
             setIsAuthenticated(true);
             navigate('/');
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, login, logout, loading }}>
-            {children}
+            {loading ? <div>Loading...</div> : children}
         </AuthContext.Provider>
     );
 };
