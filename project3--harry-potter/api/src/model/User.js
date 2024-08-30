@@ -1,10 +1,10 @@
-const {Sequelize, DataTypes} = require('sequelize');
+import {Sequelize, DataTypes} from 'sequelize'
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: './database.sqlite'
 });
 
-export const UserModel = sequelize.define('User', {
+const UserModel = sequelize.define('User', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -19,3 +19,5 @@ export const UserModel = sequelize.define('User', {
         allowNull: false
     }
 })
+
+export default UserModel
