@@ -5,10 +5,13 @@ import sequelize from './src/bd/bdConnection.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import characterRouter from './src/routes/character.js'
+import compression from 'compression'
 
 dotenv.config()
 
 const app = express()
+
+app.use(compression())
 
 app.use(cors());
 app.use(bodyParser.json())
