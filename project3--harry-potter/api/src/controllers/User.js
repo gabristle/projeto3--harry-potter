@@ -1,6 +1,8 @@
-import User from '../model/User'
+import User from '../model/User.js'
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-export default User = {
+export const userController = {
     async list(req, res) {
         try{
             const users = await User.findAll()
@@ -10,11 +12,45 @@ export default User = {
         }
     },
 
+    async login(req, res) {
+        try {
+            const { email, senha } = req.body;
+
+            const user = await User.findOne({ where: { email } });
+            if (!user) {
+                return res.status(401).json({ message: 'Email or password is invalid!' });
+            }
+
+            const isPasswordValid = await bcrypt.compare(senha, user.senha);
+            if (!isPasswordValid) {
+                return res.status(401).json({ message: 'Email or password is invalid!' });
+            }
+
+            const token = jwt.sign(
+                { userId: user.id, email: user.email }, 
+                process.env.JWT_SECRET,
+                { expiresIn: '1h' }
+            );
+            res.status(200).json({ message: 'Login success!', token });
+        } catch (error) {
+            console.error(error);
+            res.status(400).json({ message: error });
+        }
+    },
+
     async addUser(req, res) {
         try{
             const {email, senha} = req.body
-            const user = await User.create({email, senha});
-            res.status(200).json(user)
+            const existingUser = await User.findOne({ where: { email } });
+            if (existingUser) {
+                return res.status(400).json({ message: 'User already exist' });
+            }
+
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(senha, salt);
+
+            const user = await User.create({ email, senha: hashedPassword });
+            res.status(201).json({ message: 'User created with success', user });
         }catch(error){
             console.error(error)
         }
@@ -32,4 +68,4 @@ export default User = {
             console.error(error)
         }
     }
-};
+}

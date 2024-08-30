@@ -4,8 +4,19 @@ import Button from '../../components/Button'
 import Footer from '../../components/Footer'
 import style from './style.module.css'
 import logo from '../../assets/logo.png'
+import { useState, useContext } from 'react'
+import AuthContext from '../../context/AuthContext.jsx'
 
 function SignIn() {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const { login } = useContext(AuthContext)
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    await login(email, senha)
+  };
+
   return (
     <div className={style.body}>
       <div className={style.mainContent}>
@@ -17,17 +28,17 @@ function SignIn() {
             <h1>Sign In</h1>
             <p>Enter your credentials to Sign In</p>
           </div>
-          <div>
+          <form onSubmit={handleSubmit}>
             <div className={style.inputContainer}>
               <label htmlFor="email">Email</label>
-              <Input type='email' placeholder={'Enter your email'} id={'email'}/>
+              <Input type='email' placeholder={'Enter your email'} id={'email'} onChange={(e) => setEmail(e.target.value)}/>
             </div>
             <div className={style.inputContainer}>
               <label htmlFor="password">Password</label>
-              <Input type={'password'} placeholder={'Enter your password'} id={'password'}/>
+              <Input type={'password'} placeholder={'Enter your password'} id={'password'} onChange={(e) => setSenha(e.target.value)}/>
             </div>
-            <Button value={'Sign In'}/>
-          </div>
+            <Button type={'submit'} value={'Sign In'}/>
+          </form>
         </main>
       </div>
       <Footer />
