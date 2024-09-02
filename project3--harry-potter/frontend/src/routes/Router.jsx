@@ -25,7 +25,7 @@ function Router() {
   return (
     <Routes>
       <Route path="/login" element={<PublicRoutes><SignIn /></PublicRoutes>} />
-      <Route path="/" element={<PrivateRoutes><Characters /></PrivateRoutes>} />
+      <Route path="/" element={<Characters />} />
       <Route path="/error" element={<Error />} />
       <Route path="*" element={<Navigate to="/error" />} />
     </Routes>
