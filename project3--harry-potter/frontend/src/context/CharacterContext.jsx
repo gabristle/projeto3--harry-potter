@@ -1,62 +1,76 @@
-import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { createContext, useState, useEffect, useContext } from 'react'
+import axios from 'axios'
+import AuthContext from '../context/AuthContext'
 
 const CharacterContext = createContext();
 
 const CharacterProvider = ({ children }) => {
-    const [allCharacters, setAllCharacters] = useState([]);
-    const [foundCharacters, setFoundCharacters] = useState([]);
-    const [errorMessage, setErrorMessage] = useState('');
+    const { isAuthenticated } = useContext(AuthContext)
+    const [allCharacters, setAllCharacters] = useState([])
+    const [foundCharacters, setFoundCharacters] = useState([])
+    const [errorMessage, setErrorMessage] = useState('')
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const dbResponse = await axios.get('http://localhost:3000/characters');
-                const dbCharacters = dbResponse.data;
-                setAllCharacters(dbCharacters);
-                setFoundCharacters(dbCharacters);
+                const dbResponse = await axios.get('http://localhost:3000/characters')
+                const dbCharacters = dbResponse.data
+                setAllCharacters(dbCharacters)
+                setFoundCharacters(dbCharacters)
             } catch (error) {
-                setErrorMessage('Error fetching data');
-                console.error('Error fetching data:', error);
+                setErrorMessage('Error fetching data')
+                console.error('Error fetching data:', error)
             }
         };
 
         fetchData();
     }, []);
 
-    const searchCharacter = (characterName) => {
-        const trimmedName = characterName.trim();
-        if (validateSearch(trimmedName)) {
-            const filteredCharacters = allCharacters.filter(character =>
-                character.name.toLowerCase().startsWith(trimmedName.toLowerCase())
-            );
-            setFoundCharacters(filteredCharacters);
-        } else if (trimmedName.length === 0) {
-            setFoundCharacters(allCharacters);
+    const searchCharacters = async (name) => {
+        if (!isAuthenticated) {
+            setErrorMessage('You must be logged in to search for characters');
+            return;
         }
-    };
-
-    const validateSearch = (toValidate) => {
-        if (toValidate.length <= 2) {
-            setErrorMessage('Write more than 2 characters');
-            return false;
-        } else if (toValidate.length === 0) {
-            setErrorMessage('The input is empty, write at least 2 characters');
-            return false;
-        } else if (toValidate.length > 20) {
-            setErrorMessage('Write less than 21 characters');
-            return false;
-        } else {
+    
+        if (name.trim() === '') {
+            setFoundCharacters(allCharacters)
             setErrorMessage('');
+            return;
         }
-        return true;
+    
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`http://localhost:3000/characters/${name}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const characters = response.data;
+            if (characters.length === 0) {
+                setErrorMessage('No characters found');
+            } else {
+                setErrorMessage('');
+            }
+            setFoundCharacters(characters);
+        } catch (error) {
+            console.error('Error searching for characters:', error);
+            setErrorMessage('Error searching for characters');
+            setFoundCharacters([]);
+        }
     };
 
     const addCharacter = async (newCharacter) => {
+        if (!isAuthenticated) {
+            setErrorMessage('You must be logged in to add a character');
+            return;
+        }
+        
         try {
-            const response = await axios.post('http://localhost:3000/characters', newCharacter);
+            const token = localStorage.getItem('token');
+            const response = await axios.post('http://localhost:3000/characters', newCharacter, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
             const addedCharacter = response.data;
-
             setAllCharacters(prev => [...prev, addedCharacter]);
             setFoundCharacters(prev => [...prev, addedCharacter]);
         } catch (error) {
@@ -66,7 +80,7 @@ const CharacterProvider = ({ children }) => {
     };
 
     return (
-        <CharacterContext.Provider value={{ foundCharacters, errorMessage, searchCharacter, addCharacter }}>
+        <CharacterContext.Provider value={{ foundCharacters, errorMessage, addCharacter, searchCharacters }}>
             {children}
         </CharacterContext.Provider>
     );
