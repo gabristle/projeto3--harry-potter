@@ -1,5 +1,6 @@
 import CharacterModel from '../model/Character.js'
 import { validationResult } from 'express-validator'
+import { Op } from 'sequelize'
 
 export const characterController = {
     async listAll(req, res) {
@@ -12,23 +13,17 @@ export const characterController = {
     },
 
     async search(req, res) {
+        const name = req.params.name;
         try {
-            const { name } = req.query
-            let characters
-            if (name) {
-                characters = await CharacterModel.findAll({
-                    where: {
-                        name: {
-                            [Sequelize.Op.like]: `%${name}%`
-                        }
-                    }
-                })
+            const characters = await CharacterModel.findAll({ where: { name: { [Op.like]: `%${name}%`} } });
+    
+            if (characters.length > 0) {
+                res.status(200).json(characters);
             } else {
-                characters = await CharacterModel.findAll()
+                res.status(404).json({ message: 'Characters not found' });
             }
-            res.json(characters)
         } catch (error) {
-            res.status(400).json({ message: 'Server error during character search' })
+            res.status(500).json({ message: 'An error occurred', error: error.message });
         }
     },
 
