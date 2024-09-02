@@ -6,6 +6,7 @@ import style from './style.module.css'
 import logo from '../../assets/logo.png'
 import { useState, useContext } from 'react'
 import AuthContext from '../../context/AuthContext.jsx'
+import { escapeHTML } from '../../utils/escapeHTML.js'
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -31,11 +32,11 @@ function SignIn() {
           <form onSubmit={handleSubmit}>
             <div className={style.inputContainer}>
               <label htmlFor="email">Email</label>
-              <Input type='email' placeholder={'Enter your email'} id={'email'} onChange={(e) => setEmail(e.target.value)}/>
+              <Input type='email' placeholder={'Enter your email'} id={'email'} onChange={(e) => setEmail(escapeHTML(e.target.value))}/>
             </div>
             <div className={style.inputContainer}>
               <label htmlFor="password">Password</label>
-              <Input type={'password'} placeholder={'Enter your password'} id={'password'} onChange={(e) => setSenha(e.target.value)}/>
+              <Input type={'password'} placeholder={'Enter your password'} id={'password'} onChange={(e) => setSenha(escapeHTML(e.target.value))}/>
             </div>
             <Button type={'submit'} value={'Sign In'}/>
           </form>

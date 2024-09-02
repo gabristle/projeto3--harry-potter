@@ -11,10 +11,10 @@ const CharacterProvider = ({ children }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://potterhead-api.vercel.app/api/characters');
-                const characters = response.data;
-                setAllCharacters(characters);
-                setFoundCharacters(characters);
+                const dbResponse = await axios.get('http://localhost:3000/characters');
+                const dbCharacters = dbResponse.data;
+                setAllCharacters(dbCharacters);
+                setFoundCharacters(dbCharacters);
             } catch (error) {
                 setErrorMessage('Error fetching data');
                 console.error('Error fetching data:', error);
@@ -46,8 +46,8 @@ const CharacterProvider = ({ children }) => {
         } else if (toValidate.length > 20) {
             setErrorMessage('Write less than 21 characters');
             return false;
-        }else {
-            setErrorMessage('')
+        } else {
+            setErrorMessage('');
         }
         return true;
     };
