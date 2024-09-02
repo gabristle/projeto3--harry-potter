@@ -8,8 +8,14 @@ import characterRouter from './src/routes/character.js'
 import compression from 'compression'
 import errorHandler from './src/middlewares/errorHandler.js'
 import requestLogger from './src/middlewares/logMiddleware.js'
+import fs from 'fs'
+import https from 'https'
 
 dotenv.config()
+
+const key = fs.readFileSync('./certificate/key.pem', 'utf8')
+const certificate = fs.readFileSync('./certificate/cert.pem', 'utf8')
+const credentials = {key: key, cert: certificate}
 
 const app = express()
 
@@ -18,15 +24,19 @@ app.use(requestLogger)
 
 app.use(cors());
 app.use(bodyParser.json())
+
 app.use('/user', userRouter)
 app.use('/characters', characterRouter)
+
 app.use(errorHandler)
 
 const PORT = 3000
 
+const httpsServer = https.createServer(credentials, app)
+
 sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-      console.info(`Server running on http://localhost:${PORT}, Logs:   `)
+  httpsServer.listen(PORT, () => {
+      console.info(`Server running on https://localhost:${PORT}, Logs:   `)
   })
 }).catch(error => {
   console.error('Unable to connect to the database:', error)

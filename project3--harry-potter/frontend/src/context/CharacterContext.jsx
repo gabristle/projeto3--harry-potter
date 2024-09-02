@@ -13,7 +13,7 @@ const CharacterProvider = ({ children }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const dbResponse = await axios.get('http://localhost:3000/characters')
+                const dbResponse = await axios.get('https://localhost:3000/characters')
                 const dbCharacters = dbResponse.data
                 setAllCharacters(dbCharacters)
                 setFoundCharacters(dbCharacters)
@@ -40,7 +40,7 @@ const CharacterProvider = ({ children }) => {
     
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`http://localhost:3000/characters/${name}`, {
+            const response = await axios.get(`https://localhost:3000/characters/${name}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -67,7 +67,7 @@ const CharacterProvider = ({ children }) => {
         
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.post('http://localhost:3000/characters', newCharacter, {
+            const response = await axios.post('https://localhost:3000/characters', newCharacter, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const addedCharacter = response.data;

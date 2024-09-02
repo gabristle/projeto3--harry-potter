@@ -1196,3 +1196,81 @@
 {"level":"info","message":"Response: 204 OPTIONS /characters/Hermione","timestamp":"2024-09-02T19:50:37.124Z"}
 {"level":"info","message":"Request: GET /characters/Hermione","timestamp":"2024-09-02T19:50:37.126Z"}
 {"level":"info","message":"Response: 500 GET /characters/Hermione","timestamp":"2024-09-02T19:50:37.132Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T20:58:01.777Z"}
+{"level":"info","message":"Response: 304 GET /characters","timestamp":"2024-09-02T20:58:01.805Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T20:58:01.809Z"}
+{"level":"info","message":"Response: 304 GET /characters","timestamp":"2024-09-02T20:58:01.814Z"}
+{"level":"info","message":"Request: OPTIONS /characters/Har","timestamp":"2024-09-02T20:58:30.922Z"}
+{"level":"info","message":"Response: 204 OPTIONS /characters/Har","timestamp":"2024-09-02T20:58:30.924Z"}
+{"level":"info","message":"Request: GET /characters/Har","timestamp":"2024-09-02T20:58:30.926Z"}
+{"level":"info","message":"Response: 403 GET /characters/Har","timestamp":"2024-09-02T20:58:30.941Z"}
+{"level":"info","message":"Request: OPTIONS /user/login","timestamp":"2024-09-02T20:58:37.344Z"}
+{"level":"info","message":"Response: 204 OPTIONS /user/login","timestamp":"2024-09-02T20:58:37.346Z"}
+{"level":"info","message":"Request: POST /user/login","timestamp":"2024-09-02T20:58:37.348Z"}
+{"level":"info","message":"Response: 200 POST /user/login","timestamp":"2024-09-02T20:58:37.452Z"}
+{"level":"info","message":"Request: OPTIONS /characters/Gabriella","timestamp":"2024-09-02T20:58:40.172Z"}
+{"level":"info","message":"Response: 204 OPTIONS /characters/Gabriella","timestamp":"2024-09-02T20:58:40.174Z"}
+{"level":"info","message":"Request: GET /characters/Gabriella","timestamp":"2024-09-02T20:58:40.177Z"}
+{"level":"info","message":"Response: 404 GET /characters/Gabriella","timestamp":"2024-09-02T20:58:40.188Z"}
+{"level":"info","message":"Request: GET /characters/Gabriella","timestamp":"2024-09-02T20:58:40.772Z"}
+{"level":"info","message":"Response: 404 GET /characters/Gabriella","timestamp":"2024-09-02T20:58:40.780Z"}
+{"level":"info","message":"Request: GET /characters/Gabriella","timestamp":"2024-09-02T20:58:41.325Z"}
+{"level":"info","message":"Response: 404 GET /characters/Gabriella","timestamp":"2024-09-02T20:58:41.333Z"}
+{"level":"info","message":"Request: OPTIONS /user/login","timestamp":"2024-09-02T20:58:46.588Z"}
+{"level":"info","message":"Response: 204 OPTIONS /user/login","timestamp":"2024-09-02T20:58:46.590Z"}
+{"level":"info","message":"Request: POST /user/login","timestamp":"2024-09-02T20:58:46.592Z"}
+{"level":"info","message":"Response: 200 POST /user/login","timestamp":"2024-09-02T20:58:46.671Z"}
+{"level":"info","message":"Request: OPTIONS /characters","timestamp":"2024-09-02T21:00:06.020Z"}
+{"level":"info","message":"Response: 204 OPTIONS /characters","timestamp":"2024-09-02T21:00:06.021Z"}
+{"level":"info","message":"Request: POST /characters","timestamp":"2024-09-02T21:00:06.022Z"}
+{"level":"info","message":"Response: 201 POST /characters","timestamp":"2024-09-02T21:00:06.045Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:00:30.135Z"}
+{"level":"info","message":"Response: 200 GET /characters","timestamp":"2024-09-02T21:00:30.143Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:00:30.144Z"}
+{"level":"info","message":"Response: 304 GET /characters","timestamp":"2024-09-02T21:00:30.149Z"}
+{"level":"info","message":"Request: OPTIONS /characters/Har","timestamp":"2024-09-02T21:00:36.211Z"}
+{"level":"info","message":"Response: 204 OPTIONS /characters/Har","timestamp":"2024-09-02T21:00:36.212Z"}
+{"level":"info","message":"Request: GET /characters/Har","timestamp":"2024-09-02T21:00:36.214Z"}
+{"level":"info","message":"Response: 200 GET /characters/Har","timestamp":"2024-09-02T21:00:36.219Z"}
+{"level":"info","message":"Request: OPTIONS /characters/Her","timestamp":"2024-09-02T21:00:40.206Z"}
+{"level":"info","message":"Response: 204 OPTIONS /characters/Her","timestamp":"2024-09-02T21:00:40.207Z"}
+{"level":"info","message":"Request: GET /characters/Her","timestamp":"2024-09-02T21:00:40.210Z"}
+{"level":"info","message":"Response: 304 GET /characters/Her","timestamp":"2024-09-02T21:00:40.214Z"}
+{"level":"info","message":"Request: OPTIONS /characters/Dra","timestamp":"2024-09-02T21:00:43.672Z"}
+{"level":"info","message":"Response: 204 OPTIONS /characters/Dra","timestamp":"2024-09-02T21:00:43.674Z"}
+{"level":"info","message":"Request: GET /characters/Dra","timestamp":"2024-09-02T21:00:43.676Z"}
+{"level":"info","message":"Response: 200 GET /characters/Dra","timestamp":"2024-09-02T21:00:43.680Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:20:30.944Z"}
+{"level":"info","message":"Response: 304 GET /characters","timestamp":"2024-09-02T21:20:30.974Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:20:30.978Z"}
+{"level":"info","message":"Response: 304 GET /characters","timestamp":"2024-09-02T21:20:30.994Z"}
+{"level":"info","message":"Request: GET /","timestamp":"2024-09-02T21:25:45.178Z"}
+{"level":"info","message":"Response: 404 GET /","timestamp":"2024-09-02T21:25:45.189Z"}
+{"level":"info","message":"Request: GET /","timestamp":"2024-09-02T21:28:02.550Z"}
+{"level":"info","message":"Response: 404 GET /","timestamp":"2024-09-02T21:28:02.560Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:29:39.822Z"}
+{"level":"info","message":"Response: 200 GET /characters","timestamp":"2024-09-02T21:29:39.839Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:29:42.205Z"}
+{"level":"info","message":"Response: 200 GET /characters","timestamp":"2024-09-02T21:29:42.211Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:29:44.862Z"}
+{"level":"info","message":"Response: 200 GET /characters","timestamp":"2024-09-02T21:29:44.867Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:29:48.186Z"}
+{"level":"info","message":"Response: 200 GET /characters","timestamp":"2024-09-02T21:29:48.191Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:29:48.196Z"}
+{"level":"info","message":"Response: 200 GET /characters","timestamp":"2024-09-02T21:29:48.206Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:29:59.178Z"}
+{"level":"info","message":"Response: 200 GET /characters","timestamp":"2024-09-02T21:29:59.184Z"}
+{"level":"info","message":"Request: GET /characters","timestamp":"2024-09-02T21:29:59.190Z"}
+{"level":"info","message":"Response: 200 GET /characters","timestamp":"2024-09-02T21:29:59.200Z"}
+{"level":"info","message":"Request: OPTIONS /user/login","timestamp":"2024-09-02T21:30:01.062Z"}
+{"level":"info","message":"Response: 204 OPTIONS /user/login","timestamp":"2024-09-02T21:30:01.064Z"}
+{"level":"info","message":"Request: POST /user/login","timestamp":"2024-09-02T21:30:01.066Z"}
+{"level":"info","message":"Response: 200 POST /user/login","timestamp":"2024-09-02T21:30:01.167Z"}
+{"level":"info","message":"Request: OPTIONS /characters/Har","timestamp":"2024-09-02T21:30:13.646Z"}
+{"level":"info","message":"Response: 204 OPTIONS /characters/Har","timestamp":"2024-09-02T21:30:13.649Z"}
+{"level":"info","message":"Request: GET /characters/Har","timestamp":"2024-09-02T21:30:13.651Z"}
+{"level":"info","message":"Response: 200 GET /characters/Har","timestamp":"2024-09-02T21:30:13.663Z"}
+{"level":"info","message":"Request: OPTIONS /characters","timestamp":"2024-09-02T21:31:01.260Z"}
+{"level":"info","message":"Response: 204 OPTIONS /characters","timestamp":"2024-09-02T21:31:01.261Z"}
+{"level":"info","message":"Request: POST /characters","timestamp":"2024-09-02T21:31:01.263Z"}
+{"level":"info","message":"Response: 201 POST /characters","timestamp":"2024-09-02T21:31:01.300Z"}
