@@ -1,35 +1,42 @@
 import { body } from 'express-validator'
 
-export const validateCharacter = [
+export const characterMiddleware = [
     body('name')
+        .trim().escape()
         .isString().withMessage('Name must be a string')
         .notEmpty().withMessage('Name is required'),
 
     body('species')
-        .optional()
-        .isString().withMessage('Species must be a string'),
+        .trim().escape()
+        .isString().withMessage('Species must be a string')
+        .notEmpty().withMessage('Name is required'),
 
     body('gender')
-        .optional()
-        .isString().withMessage('Gender must be a string'),
+        .trim().escape()
+        .isString().withMessage('Gender must be a string')
+        .notEmpty().withMessage('Name is required'),
 
     body('house')
-        .optional()
-        .isString().withMessage('House must be a string'),
+        .trim().escape()
+        .isString().withMessage('House must be a string')
+        .notEmpty().withMessage('Name is required'),
 
     body('dateOfBirth')
-        .optional()
-        .isISO8601().withMessage('Date of Birth must be a valid date'),
+        .isISO8601()
+        .notEmpty(),
 
     body('ancestry')
-        .optional()
-        .isString().withMessage('Ancestry must be a string'),
+        .trim().escape()
+        .isString().withMessage('Ancestry must be a string')
+        .notEmpty().withMessage('Name is required'),
 
     body('eyeColor')
-        .optional()
-        .isString().withMessage('Eye color must be a string'),
+        .trim().escape()
+        .isString().withMessage('Eye color must be a string')
+        .notEmpty().withMessage('Name is required'),
 
     body('hairColor')
-        .optional()
-        .isString().withMessage('Hair color must be a string'),
+        .trim().escape()
+        .isString().withMessage('Hair color must be a string')
+        .notEmpty().withMessage('Name is required'),
 ]

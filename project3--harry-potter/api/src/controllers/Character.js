@@ -7,7 +7,7 @@ export const characterController = {
             const characters = await CharacterModel.findAll()
             res.status(200).json(characters)
         }catch(error){
-            res.status(400).json({message: error})
+            res.status(400).json({message: 'Server error during character list'})
         }
     },
 
@@ -28,7 +28,7 @@ export const characterController = {
             }
             res.json(characters)
         } catch (error) {
-            res.status(400).json({ message: error.message })
+            res.status(400).json({ message: 'Server error during character search' })
         }
     },
 
@@ -43,7 +43,7 @@ export const characterController = {
             const newCharacter = await CharacterModel.create(character)
             res.status(201).json(newCharacter)
         } catch (error) {
-            res.status(400).json({ message: error.message })
+            res.status(400).json({ message: 'Server error during character add' })
         }
     }
 }

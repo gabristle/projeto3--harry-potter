@@ -6,18 +6,15 @@ import { body, validationResult } from 'express-validator'
 export const userController = {
     async list(req, res) {
         try{
-            const users = await User.findAll()
+            const users = await User.findAll({ attributes: ['id', 'email']})
             res.status(200).json(users)
         }catch(error){
-            console.error(error)
+            console.error('Server error during user list')
         }
     },
 
     async login(req, res) {
         try {
-            await body('email').isEmail().withMessage('Invalid email format').run(req)
-            await body('senha').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long').run(req)
-
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array() })
@@ -49,9 +46,6 @@ export const userController = {
 
     async addUser(req, res) {
         try {
-            await body('email').isEmail().withMessage('Invalid email format').run(req)
-            await body('senha').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long').run(req)
-
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array() })
@@ -71,20 +65,20 @@ export const userController = {
             res.status(201).json({ message: 'User created successfully.', user })
         } catch (error) {
             console.error(error)
-            res.status(500).json({ message: 'Server error during user creation' })
+            res.status(500).json({ message: 'Server error during user add' })
         }
     },
 
     async delete(req, res) {
         try{
             const userId = req.params.id
-            const userDeleted = await User.destroy(userId)
-            if(userDeleted){
-                res.status(400).json({message: 'User not found!'})
+            const userDeleted = await User.destroy({ where: {id: userId} })
+            if(!userDeleted){
+                res.status(404).json({message: 'User not found!'})
             }
             res.status(200).json({message: 'User deleted with success!'})
         }catch(error){
-            console.error(error)
+            console.error('Server error during user delete')
         }
     }
 }

@@ -25,9 +25,7 @@ function Characters() {
   }
 
   const handleChange = (e) => {
-    const value = e.target.value
     setSearch(e.target.value)
-    searchCharacter(e.target.value)
   }
   
   const handleLogout = () => {

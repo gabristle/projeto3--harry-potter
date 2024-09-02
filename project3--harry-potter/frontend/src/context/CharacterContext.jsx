@@ -11,20 +11,10 @@ const CharacterProvider = ({ children }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Fetch characters from the external API
-                const apiResponse = await axios.get('https://potterhead-api.vercel.app/api/characters');
-                const apiCharacters = apiResponse.data;
-
-                // Fetch characters from the local database
                 const dbResponse = await axios.get('http://localhost:3000/characters');
                 const dbCharacters = dbResponse.data;
-
-                // Combine characters from both sources
-                const combinedCharacters = [...apiCharacters, ...dbCharacters];
-
-                // Update state
-                setAllCharacters(combinedCharacters);
-                setFoundCharacters(combinedCharacters);
+                setAllCharacters(dbCharacters);
+                setFoundCharacters(dbCharacters);
             } catch (error) {
                 setErrorMessage('Error fetching data');
                 console.error('Error fetching data:', error);
