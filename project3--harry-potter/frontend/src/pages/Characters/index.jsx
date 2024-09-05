@@ -29,7 +29,7 @@ function Characters() {
 
   const handleSearch = () => {
     if (isAuthenticated) {
-      searchCharacters(search);
+      searchCharacters(DOMPurify.sanitize(search));
       setSearchError('');
     } else {
       setSearchError(alert('You must be logged in to search for characters.'));

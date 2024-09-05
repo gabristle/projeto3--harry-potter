@@ -15,8 +15,8 @@ const CharacterProvider = ({ children }) => {
             try {
                 const dbResponse = await axios.get('https://localhost:3000/characters')
                 const dbCharacters = dbResponse.data
-                setAllCharacters(dbCharacters)
-                setFoundCharacters(dbCharacters)
+                setAllCharacters(DOMPurify.sanitize(dbCharacters))
+                setFoundCharacters(DOMPurify.sanitize(dbCharacters))
             } catch (error) {
                 setErrorMessage('Error fetching data')
                 console.error('Error fetching data:', error)
@@ -33,7 +33,7 @@ const CharacterProvider = ({ children }) => {
         }
     
         if (name.trim() === '') {
-            setFoundCharacters(allCharacters)
+            setFoundCharacters(DOMPurify.sanitize(allCharacters))
             setErrorMessage('');
             return;
         }
@@ -51,7 +51,7 @@ const CharacterProvider = ({ children }) => {
             } else {
                 setErrorMessage('');
             }
-            setFoundCharacters(characters);
+            setFoundCharacters(DOMPurify.sanitize(characters));
         } catch (error) {
             console.error('Error searching for characters:', error);
             setErrorMessage('Error searching for characters');
@@ -71,8 +71,8 @@ const CharacterProvider = ({ children }) => {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const addedCharacter = response.data;
-            setAllCharacters(prev => [...prev, addedCharacter]);
-            setFoundCharacters(prev => [...prev, addedCharacter]);
+            setAllCharacters(DOMPurify.sanitize(prev => [...prev, addedCharacter]));
+            setFoundCharacters(DOMPurify.sanitize(prev => [...prev, addedCharacter]));
         } catch (error) {
             setErrorMessage('Error adding character');
             console.error('Error adding character:', error);

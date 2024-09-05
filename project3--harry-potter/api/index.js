@@ -10,14 +10,22 @@ import errorHandler from './src/middlewares/errorHandler.js'
 import requestLogger from './src/middlewares/logMiddleware.js'
 import fs from 'fs'
 import https from 'https'
-
-dotenv.config()
+import rateLimit from 'express-rate-limit'
 
 const key = fs.readFileSync('./certificate/key.pem', 'utf8')
 const certificate = fs.readFileSync('./certificate/cert.pem', 'utf8')
 const credentials = {key: key, cert: certificate}
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'You have reached the requisition limit, try again later!',
+  headers: true
+});
+
 const app = express()
+dotenv.config()
+app.use(limiter);
 
 app.use(compression())
 app.use(requestLogger)
